@@ -1,0 +1,30 @@
+<h1>Products1</h1>
+
+<%= form_tag productions_path, method: :get do %>
+<%= text_field_tag :search, params[:search], size: 30 %>
+<%= submit_tag "Search", name: nil %>
+<% end %>
+<br>
+<br>
+<br>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#navbar-search-input").keyup(function(){
+        $("#navbar-search-btn").click();
+    });
+  });
+</script>
+<%= form_tag search_productions_path, method: :get, remote: true , class: 'navbar-form navbar-left' do %>
+<div class='form-group'>
+ <%= text_field_tag :query, params[:query], id: "navbar-search-input", class: 'form-control', placeholder: 'Product name.....' %>
+</div>
+<%= button_tag(type: 'submit', id: 'navbar-search-btn', class: 'btn btn-default') do %>
+<i class='fa fa-search fa-fw'></i> Search
+<% end %>  
+<% end %>
+<br>
+<br>
+<div id="result">
+<%= render "result", products: @products %>
+</div>

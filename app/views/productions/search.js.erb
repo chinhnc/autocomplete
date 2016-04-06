@@ -1,1 +1,2 @@
 $("#result").html("<%= escape_javascript(render('result', products: @products)) %>")
+$("#result").prepend("<h1>Searching result</h1><br/>")
